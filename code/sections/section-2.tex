@@ -1,0 +1,205 @@
+\section{On Transformations}
+
+Consider Euler's classical forward difference formula:
+
+\begin{align}
+f(a + x) = \sum_{k=0}^{\infty} \binom{x}{k} \Delta^k f(a)
+\end{align}
+
+Let us define the original forward difference set as:
+
+\[
+\Delta = \{ \Delta^0 f(a),\ \Delta^1 f(a),\ \Delta^2 f(a),\ \dots,\ \Delta^k f(a) \}
+\]
+
+Now, define a transformed set $\Delta'$, which we refer to as the **first-order Pascal transform** of $\Delta$, denoted:
+
+\[
+P_1(\Delta) = \Delta' = \left\{
+\Delta^0 f(a),\ \Delta^0 f(a) + \Delta^1 f(a),\ \Delta^1 f(a) + \Delta^2 f(a),\ \dots,\ \Delta^{k-1} f(a) + \Delta^k f(a),\ \Delta^k f(a)
+\right\}
+\]
+
+This transformation resembles the additive behavior seen in Pascal’s triangle, shifting the structure of the differences to cumulative adjacent pairs.
+
+We now aim to show the following identity:  
+If
+
+\[
+f(a + x) = \sum_{k=0}^{\infty} \binom{x}{k} \Delta^k f(a), \quad \Delta^k f(a) \in \Delta
+\]
+
+then the cumulative sum satisfies:
+
+\begin{align}
+\sum_{x=0}^{n} f(a + x) = \sum_{k=0}^{\infty} \binom{n}{k} \Delta'^k f(a), \quad \Delta'^k f(a) \in \Delta'
+\end{align}
+
+This provides a discrete analogue of the integral of an interpolated function, where the difference terms are transformed via $P_1$. This structure hints at a broader algebra of transformations over difference sets and may lead to higher-order transforms $P_2, P_3, \dots$, each corresponding to deeper combinatorial structures.
+
+To prove this transformation identity, we consider the forward differences of the function $f(x)$, denoted by the set $\gamma$, defined as:
+
+\[
+\gamma = \left\{
+f(a),\
+f(a+1) - f(a),\
+f(a+2) - 2f(a+1) + f(a),\
+\dots,\
+\sum_{i=0}^{n} \binom{n-1}{i} f(a+i)(-1)^{n-i-1}
+\right\}
+\]
+
+In general, the $k$-th term of this sequence is given by:
+
+\begin{align}
+\Delta^k f(a) = \sum_{i=0}^{k-1} \binom{k-1}{i} f(a+i)(-1)^{k-i-1}
+\end{align}
+
+Now, consider the cumulative sum sequence of the function:
+
+\[
+\left\{
+f(a),\
+f(a) + f(a+1),\
+f(a) + f(a+1) + f(a+2),\
+\dots,\
+\sum_{i=0}^{n} f(a+i)
+\right\}
+\]
+
+We denote the forward differences of this sequence by the set $\gamma'$. These differences can be partitioned into three subsets:
+
+\begin{align}
+\gamma' &= \gamma_1 \cup \gamma_2 \cup \gamma_3
+\end{align}
+\begin{align}
+\gamma_1 &= \{ f(a) \} 
+\end{align}
+\begin{align}
+\gamma_2 &= \left\{
+f(a+1),\
+f(a+2) - f(a+1),\
+f(a+3) - 2f(a+2) + f(a+1),\
+\dots,\
+\sum_{i=0}^{n-1} \binom{n-1}{n-i-1} f(a+i+1)(-1)^{n-i-1}
+\right\}
+\end{align}
+\begin{align}
+\gamma_3 &= \left\{
+\sum_{i=0}^{n} \binom{n-1}{i} f(a+i)(-1)^{n-i-1}
+\right\}
+\end{align}
+
+Notably, the $k$-th term of the central subset $\gamma_2$ is given by the expression:
+
+\begin{align}
+\Delta'^k = \sum_{i=0}^{k-1} \binom{k-1}{i} f(a+i+1)(-1)^{k-i-1}
+\end{align}
+
+We now demonstrate the elegant identity:
+\[
+\Delta^k f(a) + \Delta^{k+1} f(a) = \Delta'^k f(a)
+\]
+where $\Delta'^k f(a)$ denotes the $k$-th term in the forward difference sequence of the cumulative sum $S(x) = \sum_{j=0}^x f(j)$. Assuming $k+1 \leq n$, we expand the terms explicitly.
+
+First, consider the standard expressions for the $k$-th and $(k+1)$-th forward differences of $f$:
+
+\begin{align}
+\Delta^k f(a) &= \sum_{i=0}^{k-1} \binom{k-1}{i} f(a+i)(-1)^{k-i-1} \\
+\Delta^{k+1} f(a) &= \sum_{i=0}^{k} \binom{k}{i} f(a+i)(-1)^{k-i}
+\end{align}
+
+Adding both expressions:
+
+\begin{align}
+\Delta^k f(a) + \Delta^{k+1} f(a) 
+&= \sum_{i=0}^{k-1} \binom{k-1}{i} f(a+i)(-1)^{k-i-1}
++ \sum_{i=0}^{k} \binom{k}{i} f(a+i)(-1)^{k-i} \\
+&= \sum_{i=1}^{k-1} \left[\binom{k-1}{i} - \binom{k}{i} \right] f(a+i)(-1)^{k-i-1}
++ f(a+k)
+\end{align}
+
+Using the Pascal identity:
+\[
+\binom{k-1}{i} - \binom{k}{i} = -\binom{k-1}{i-1}
+\]
+
+we get:
+
+\begin{align}
+\Delta^k f(a) + \Delta^{k+1} f(a) 
+= \sum_{i=1}^{k-1} \left[ -\binom{k-1}{i-1} \right] f(a+i)(-1)^{k-i-1} + f(a+k)
+= \sum_{i=1}^{k-1} \binom{k-1}{i-1} f(a+i)(-1)^{k-i} + f(a+k)
+\end{align}
+
+Changing the index in the summation:
+
+\begin{align}
+= \sum_{i=0}^{k-2} \binom{k-1}{i} f(a+i+1)(-1)^{k-i-1} + f(a+k)
+= \sum_{i=0}^{k-1} \binom{k-1}{i} f(a+i+1)(-1)^{k-i-1}
+\end{align}
+
+This final expression is precisely the definition of $\Delta'^k f(a)$, hence:
+\[
+\Delta^k f(a) + \Delta^{k+1} f(a) = \Delta'^k f(a)
+\]
+
+This gives a relation between the central set $\gamma_2$ and the set $\gamma$, mirroring our first-order Pascal Transformation, and hence proving $(8)$.
+
+Thus, let
+\[
+\underbrace{
+P_k\big(
+P_k\big(
+\cdots
+P_k\big(
+\Delta
+\big)
+\cdots
+\big)
+\big)
+}_{n \text{ times}}
+= \Delta_k^n
+\]
+Then, we can write:
+
+\begin{align}
+\underbrace{
+\sum_{x=0}^{n}
+\sum_{x=0}^{n}
+\cdots
+\sum_{x=0}^{n}
+}_{s \text{ times}}
+f(a + x)
+&= \left( \sum_{x=0}^{n} \right)^s f(a + x) \notag \\
+&= \sum_{k=0}^{\infty} \binom{x}{k} \Delta_k f(a),
+\quad \Delta_k f(a) \in \Delta_1^s
+\end{align}
+
+A similar identity for $(1)$ can be established if we redefine the transform $P_2(\Delta)$ to perform **multiplication** instead of **addition**, as in Pascal's triangle. That is, assume a set:
+\[
+A = \{ a_0, a_1, a_2, a_3, a_4, \dots, a_n \}
+\]
+Then define:
+\[
+P_2(A) = \{ a_0,\ a_1 \cdot a_0,\ a_2 \cdot a_1,\ \dots,\ a_n \cdot a_{n-1},\ a_n \}
+\]
+
+Now, we define another such identity. Let:
+\[
+\Delta_2 = \{ \rho^0 f(a),\ \rho^1 f(a),\ \dots,\ \rho^n f(a) \}
+\]
+Let the iterative application of the transform $P_2$ on $\Delta_2$, applied $s$ times, be denoted by $\Delta_2^s$. Then:
+
+\begin{align}
+\underbrace{
+\prod_{x=0}^{n}
+\prod_{x=0}^{n}
+\cdots
+\prod_{x=0}^{n}
+}_{s \text{ times}}
+f(a + x)
+&= \left( \prod_{x=0}^{n} \right)^s f(a + x) \notag \\
+&= \prod_{k=0}^{\infty} \binom{x}{k} \Delta_k f(a),
+\quad \Delta_k f(a) \in \Delta_2^s
+\end{align}
