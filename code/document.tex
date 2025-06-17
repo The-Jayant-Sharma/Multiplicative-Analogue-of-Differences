@@ -1,0 +1,59 @@
+\documentclass[9pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs, graphicx, tikz}
+\usepackage[left=3cm, right=3cm, bottom=3.4cm]{geometry}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\renewcommand{\qedsymbol}{\emph{(end of proof)}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\thetheorem}{\Roman{theorem}}
+
+\newtheorem{definition}{Definition}
+\renewcommand{\thedefinition}{\Roman{definition}}
+
+\newtheorem{lemma}{Lemma}
+\renewcommand{\thelemma}{\Roman{lemma}}
+
+\newtheorem{conjecture}{Conjecture}
+\renewcommand{\theconjecture}{\Roman{conjecture}}
+
+
+\title{\textbf{Multiplicative Analogue to Method of Differences and Euler's Difference Formulas}}
+\author{Jayant Sharma}
+\date{\today}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\emph{Multiplicative Analogue to Method of Differences and Euler's Difference Formulas, Jayant Sharma}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Euler introduced a method for interpolating a function from a uniformly spaced set of known values using his celebrated difference formula:
+\[
+f(a + x) = \sum_{k=0}^{\infty} \binom{x}{k} \Delta^k f(a),
+\]
+where the operator $\Delta^k f(a)$ denotes the $k$-th forward difference of the function evaluated at the point $a$.
+
+This formula is profoundly effective in discrete algebraic settings, offering a systematic way to interpolate functions from finite, equally spaced data. However, in non-algebraic analytical contexts, the expansion may exhibit irregular behavior near boundaries or at certain singular points. While such anomalies can often be mitigated, a deeper generalization is desirable to extend its utility and establish broader structural properties.
+
+In this work, we propose a **multiplicative analogue** of Euler’s interpolation method. We develop a novel product expansion suited for factorial-like functions and present a **binomial analogue of the tetration function**, derived from our formulation. This approach not only broadens the algebraic scope of the classical difference method but also opens a new direction for interpolating functions in product-based discrete structures.
+
+\end{abstract}
+\tableofcontents
+
+\nocite{*}
+
+\input{sections/section-1}
+
+\bibliographystyle{plain}
+\bibliography{document}
+
+\end{document}
