@@ -1,0 +1,32 @@
+\section{Factorial-like Functions and Tetrational Expansion}
+
+$(7)$ does not expand the tetrational series and exhibits irregular behavior at certain points on the real line. To achieve a more accurate approximation of the factorial-like function, we instead utilize $(1)$, expressing the function as an infinite product.
+
+\subsection{Factorial-like Function}
+
+Let
+\begin{align}
+k = \{ a, a+1, a+2, a+3, \dots, a+x \}
+\end{align}
+Define the sequence $\rho^k$ as:
+\[
+\rho' = \left\{ 
+\prod_{i=0}^{k} (a+i)^{\binom{k}{i} (-1)^{k-i}} \;\middle|\; k \in \mathbb{N}
+\right\}
+\]
+
+Then the transformed sequence under the second-order Pascal Transform, $P_2(\rho')$, becomes:
+\[
+P_2(\rho') = 
+\left\{ a \right\} 
+\cup 
+\left\{ 
+\prod_{i=0}^{k} (1+a+i)^{\binom{k}{i} (-1)^{k-i}} \;\middle|\; k \in \mathbb{N} 
+\right\}
+\cup 
+\left\{ 
+\prod_{i=0}^{x} (a+i)^{\binom{x}{i} (-1)^{x-i}} 
+\right\}
+\]
+
+where $x \to \infty$.
