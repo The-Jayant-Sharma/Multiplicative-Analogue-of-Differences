@@ -1,0 +1,52 @@
+\section{Preliminaries}
+
+Analogous to Euler's classical forward difference expansion, we propose a multiplicative formulation of function interpolation based on a newly defined \textit{ratio operator}. The central identity we aim to establish is:
+
+\begin{align}
+f(a + x) = \prod_{k=0}^{\infty} \left( \rho^k f(a) \right)^{\binom{x}{k}},
+\end{align}
+
+where $\rho^k f(a)$ denotes the $k$-th order ratio operator applied to the function $f$ at the base point $a$. The operator is defined recursively as follows:
+
+\begin{align}
+\rho f(a) &= \frac{f(a+1)}{f(a)}, \\
+\rho^2 f(a) &= \rho\left(\rho f(a)\right) = \frac{\rho f(a+1)}{\rho f(a)}, \\
+\rho^k f(a) &= \rho\left( \rho^{k-1} f(a) \right) = \frac{\rho^{k-1} f(a+1)}{\rho^{k-1} f(a)}.
+\end{align}
+
+This operator serves as a multiplicative counterpart to the forward difference $\Delta^k f(a)$, and its structure mirrors the behavior of derivatives in a ratio-based discrete system. 
+
+To prove the identity, we consider the discrete sequence of function values:
+
+\begin{align*}
+\gamma = \{ f(a),\ f(a+1),\ f(a+2),\ f(a+3),\ \dots,\ f(a+n) \}
+\end{align*}
+
+From this set, we compute the successive ratio operators $\rho^k f(a)$ for all $k \in \mathbb{N}$. Let us define the index set:
+
+\[
+k = \{0, 1, 2, 3, \dots, k\}
+\]
+
+and the corresponding set of operator values:
+
+\[
+\rho_k = \{ \rho^0 f(a),\ \rho^1 f(a),\ \rho^2 f(a),\ \rho^3 f(a),\ \dots,\ \rho^k f(a) \}
+\]
+
+By observing the structure formed through repeated ratios, and inspired by the binomial coefficients from Pascal's triangle, we find that:
+
+\[
+f(a + n - 1) = \rho^0 f(a)^{\binom{n-1}{0}} \cdot \rho^1 f(a)^{\binom{n-1}{1}} \cdot \rho^2 f(a)^{\binom{n-1}{2}} \cdots \rho^k f(a)^{\binom{n-1}{k}}
+\]
+
+which can be compactly written as:
+
+\begin{align}
+f(a + n - 1) &= \prod_{i=0}^{k} \left( \rho^i f(a) \right)^{\binom{n-1}{i}} \\
+f(a + n)     &= \prod_{i=0}^{k} \left( \rho^i f(a) \right)^{\binom{n}{i}}
+\end{align}
+
+This forms the foundation for a multiplicative analogue of Newton’s interpolation, where the exponents follow binomial growth and the base values evolve via successive multiplicative differences.
+
+Thus our proof of $(1)$ is completed by the derivation of $(6)$.
