@@ -2,31 +2,18 @@
 
 $(7)$ does not expand the tetrational series and exhibits irregular behavior at certain points on the real line. To achieve a more accurate approximation of the factorial-like function, we instead utilize $(1)$, expressing the function as an infinite product.
 
-\subsection{Factorial-like Function}
+Using these means one can obtain a product expression for the tetration function, where if $^k a$ is the tetration of $a$ as a base with a tower height of $k$, then one may find, using the product formula and methods in this paper that,
 
-Let
 \begin{align}
-k = \{ a, a+1, a+2, a+3, \dots, a+x \}
+^{n+1} a &= \prod_{t=0}^{\infty} \prod_{i=0}^{t} \left( {}^{i+1} a \right)^{(-1)^{t-i} \cdot \binom{t}{i} \cdot \binom{n}{t} }
 \end{align}
-Define the sequence $\rho^k$ as:
-\[
-\rho' = \left\{ 
-\prod_{i=0}^{k} (a+i)^{\binom{k}{i} (-1)^{k-i}} \;\middle|\; k \in \mathbb{N}
-\right\}
-\]
 
-Then the transformed sequence under the second-order Pascal Transform, $P_2(\rho')$, becomes:
-\[
-P_2(\rho') = 
-\left\{ a \right\} 
-\cup 
-\left\{ 
-\prod_{i=0}^{k} (1+a+i)^{\binom{k}{i} (-1)^{k-i}} \;\middle|\; k \in \mathbb{N} 
-\right\}
-\cup 
-\left\{ 
-\prod_{i=0}^{x} (a+i)^{\binom{x}{i} (-1)^{x-i}} 
-\right\}
-\]
+The expression $(23)$ is a purely algebraical expression for the tetration function analogous to the binomial expansion for exponents.
 
-where $x \to \infty$.
+Similarly for Factorial-like functions, one may use Pascal's second order transform and the product formula (both were discussed above in this paper) to conclude that,
+
+\begin{align}
+\prod_{i=0}^{n} (a+i) &= a \cdot \prod_{t=0}^{\infty} \prod_{i=0}^{t} (1+a+i)^{(-1)^{t-i} \cdot \binom{t}{i} \cdot \binom{n}{t+1}}
+\end{align}
+
+The expression $(24)$ is our approximation of the factorial function, however, this may misbehave at some points, as already known in interpolation theory.
